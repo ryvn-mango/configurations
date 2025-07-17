@@ -1,0 +1,6 @@
+name: cohere
+installations:
+  - service: fastapi
+    env:
+      - name: COHERE_API_KEY
+        value: "sk-proj-1234567890"
