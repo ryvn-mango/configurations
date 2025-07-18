@@ -1,7 +1,82 @@
 apiVersion: v1
+
+promotionPipelines:
+  - name: main-pipeline
+    paths:
+      - sourceChannel: staging
+        targetChannel: production
+        criteria:
+          type: manual
+      
+      - sourceChannel: production
+        targetChannel: stable
+        criteria:
+          type: canary
+          installationFilters:
+            include:
+              - environment: prod-us-east
+            # exclude:
+            #   - environment: prod-eu-*
+            #   - environmentLabel:
+            #       key: "air-gapped"
+          conditions:
+            promoteWhenHealthy:
+              thresholdPercent: 95
+              duration: 24h
+            # promoteWhenMinInstallations:
+            #   thresholdCount: 5
+            # recallWhenUnhealthy:
+            #   thresholdPercent: 5
+            #   duration: 2h
+
+maintenanceWindows:
+  - name: core-infra
+    intervals:
+      - MONDAY/9:00-MONDAY/22:00
+      - TUESDAY/9:00-TUESDAY/22:00
+      - WEDNESDAY/9:00-WEDNESDAY/22:00
+      - THURSDAY/9:00-THURSDAY/22:00
+      - FRIDAY/9:00-FRIDAY/22:00
+
+  - name: jp-morgan
+    intervals:
+      - MONDAY/15:00-TUESDAY/09:00
+      - TUESDAY/15:00-WEDNESDAY/09:00
+      - WEDNESDAY/15:00-THURSDAY/09:00
+      - THURSDAY/15:00-FRIDAY/09:00
+      - FRIDAY/15:00-MONDAY/24:00
+
+services:
+  - name: data-ingestor
+    maintenanceWindow: core-infra
+    promotionPipeline: main-pipeline
+    build:
+      repository: ryvn-mango/charts
+      chartPath: data-ingestor
+  
+  - name: asset-manager
+    maintenanceWindow: core-infra
+    promotionPipeline: main-pipeline
+    build:
+      repository: ryvn-mango/charts
+      chartPath: asset-manager
+  
+  - name: prometheus
+    maintenanceWindow: core-infra
+    registry:
+      chartUrl: https://prometheus-community.github.io/helm-charts
+      chartName: prometheus
+  
+  - name: anomaly-detector
+    promotionPipeline: main-pipeline
+    build:
+      repository: ryvn-mango/charts
+      chartPath: anomaly-detector
+
 environments:
   - source: ./cohere/cohere.yaml
   - name: jp-morgan
+    maintenanceWindow: jp-morgan
     installations:
       - service: data-ingestor
       - service: asset-manager
