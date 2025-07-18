@@ -80,4 +80,8 @@ environments:
     installations:
       - service: data-ingestor
       - service: asset-manager
+        # config: |
+        #   resource:
+        #     requests:
+        #       cpu: 100m
       - service: anomaly-detector
