@@ -80,7 +80,7 @@ environments:
     maintenanceWindow: jp-morgan
     provider:
       type: aws
-      accountId: 941377111598
+      accountId: '941377111598'
     installations:
       - service: data-ingestor
       - service: asset-manager
