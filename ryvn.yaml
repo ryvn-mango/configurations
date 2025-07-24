@@ -30,7 +30,8 @@ promotionPipelines:
             #   duration: 2h
 
 maintenanceWindows:
-  - name: core-infra
+  - name: main-window
+    timeZone: America/New_York
     intervals:
       - MONDAY/9:00-MONDAY/22:00
       - TUESDAY/9:00-TUESDAY/22:00
@@ -39,6 +40,7 @@ maintenanceWindows:
       - FRIDAY/9:00-FRIDAY/22:00
 
   - name: jp-morgan
+    timeZone: America/New_York
     intervals:
       - MONDAY/15:00-TUESDAY/09:00
       - TUESDAY/15:00-WEDNESDAY/09:00
@@ -48,21 +50,21 @@ maintenanceWindows:
 
 services:
   - name: data-ingestor
-    maintenanceWindow: core-infra
+    maintenanceWindow: main-window
     promotionPipeline: main-pipeline
     build:
       repository: ryvn-mango/charts
       chartPath: data-ingestor
   
   - name: asset-manager
-    maintenanceWindow: core-infra
+    maintenanceWindow: main-window
     promotionPipeline: main-pipeline
     build:
       repository: ryvn-mango/charts
       chartPath: asset-manager
   
   - name: prometheus
-    maintenanceWindow: core-infra
+    maintenanceWindow: main-window
     registry:
       chartUrl: https://prometheus-community.github.io/helm-charts
       chartName: prometheus
@@ -74,7 +76,6 @@ services:
       chartPath: anomaly-detector
 
 environments:
-  - source: ./cohere/cohere.yaml
   - name: jp-morgan
     maintenanceWindow: jp-morgan
     installations:
@@ -85,3 +86,4 @@ environments:
         #     requests:
         #       cpu: 100m
       - service: anomaly-detector
+  # - source: ./cohere/cohere.yaml
