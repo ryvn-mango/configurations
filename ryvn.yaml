@@ -49,6 +49,11 @@ maintenanceWindows:
       - FRIDAY/15:00-MONDAY/24:00
 
 services:
+  - name: frontend-nextjs
+    build:
+      repository: ryvn-mango/nextjs
+      buildpack: nixpack
+  
   - name: data-ingestor
     maintenanceWindow: main-window
     promotionPipeline: main-pipeline
