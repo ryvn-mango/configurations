@@ -50,48 +50,49 @@ maintenanceWindows:
 
 services:
   - name: frontend-nextjs
+    type: server
     build:
       repository: ryvn-mango/nextjs
       buildpack: nixpack
   
-  - name: data-ingestor
-    maintenanceWindow: main-window
-    promotionPipeline: main-pipeline
-    build:
-      repository: ryvn-mango/charts
-      chartPath: data-ingestor
+  # - name: data-ingestor
+  #   maintenanceWindow: main-window
+  #   promotionPipeline: main-pipeline
+  #   build:
+  #     repository: ryvn-mango/charts
+  #     chartPath: data-ingestor
   
-  - name: asset-manager
-    maintenanceWindow: main-window
-    promotionPipeline: main-pipeline
-    build:
-      repository: ryvn-mango/charts
-      chartPath: asset-manager
+  # - name: asset-manager
+  #   maintenanceWindow: main-window
+  #   promotionPipeline: main-pipeline
+  #   build:
+  #     repository: ryvn-mango/charts
+  #     chartPath: asset-manager
   
-  - name: prometheus
-    maintenanceWindow: main-window
-    registry:
-      chartUrl: https://prometheus-community.github.io/helm-charts
-      chartName: prometheus
+  # - name: prometheus
+  #   maintenanceWindow: main-window
+  #   registry:
+  #     chartUrl: https://prometheus-community.github.io/helm-charts
+  #     chartName: prometheus
   
-  - name: anomaly-detector
-    promotionPipeline: main-pipeline
-    build:
-      repository: ryvn-mango/charts
-      chartPath: anomaly-detector
+  # - name: anomaly-detector
+  #   promotionPipeline: main-pipeline
+  #   build:
+  #     repository: ryvn-mango/charts
+  #     chartPath: anomaly-detector
 
-environments:
-  - name: jp-morgan
-    maintenanceWindow: jp-morgan
-    provider:
-      type: aws
-      accountId: '941377111598'
-    installations:
-      - service: data-ingestor
-      - service: asset-manager
-        # config: |
-        #   resource:
-        #     requests:
-        #       cpu: 100m
-      - service: anomaly-detector
-  # - source: ./cohere/cohere.yaml
+# environments:
+#   - name: jp-morgan
+#     maintenanceWindow: jp-morgan
+#     provider:
+#       type: aws
+#       accountId: '941377111598'
+#     installations:
+#       - service: data-ingestor
+#       - service: asset-manager
+#         # config: |
+#         #   resource:
+#         #     requests:
+#         #       cpu: 100m
+#       - service: anomaly-detector
+#   # - source: ./cohere/cohere.yaml
