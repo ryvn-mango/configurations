@@ -51,8 +51,8 @@ maintenanceWindows:
 services:
   - name: frontend-nextjs
     type: server
+    repo: ryvn-mango/nextjs
     build:
-      repository: ryvn-mango/nextjs
       buildpack: nixpack
   
   # - name: data-ingestor
