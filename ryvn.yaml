@@ -53,8 +53,9 @@ services:
     type: server
     repo: ryvn-mango/nextjs
     build:
-      buildpack: nixpack
-  
+      # buildpack: nixpack
+      dockerfile: Dockerfile
+   
   # - name: data-ingestor
   #   maintenanceWindow: main-window
   #   promotionPipeline: main-pipeline
