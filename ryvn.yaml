@@ -100,7 +100,7 @@ environments:
           resources:
             requests:
               cpu: 100m
-              mem: 0.1G
+              memmory: 0.1G
 #       - service: data-ingestor
 #       - service: asset-manager
 #         # config: |
