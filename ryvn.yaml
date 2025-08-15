@@ -55,7 +55,11 @@ services:
     build:
       # buildpack: nixpack
       dockerfile: Dockerfile
-   
+  - name: minute-cron-job
+    type: job
+    repo: ryvn-mango/minute-cron-job
+    build:
+      buildpack: nixpack
   # - name: data-ingestor
   #   maintenanceWindow: main-window
   #   promotionPipeline: main-pipeline
