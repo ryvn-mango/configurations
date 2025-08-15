@@ -86,13 +86,16 @@ services:
   #     repository: ryvn-mango/charts
   #     chartPath: anomaly-detector
 
-# environments:
-#   - name: jp-morgan
-#     maintenanceWindow: jp-morgan
-#     provider:
-#       type: aws
-#       accountId: '941377111598'
-#     installations:
+environments:
+  - name: jp-morgan
+    # maintenanceWindow: jp-morgan
+    provider:
+      type: aws
+      accountId: '941377111598'
+    installations:
+      - service: minute-cron-job
+        config: |
+          schedule: "* * * * *"
 #       - service: data-ingestor
 #       - service: asset-manager
 #         # config: |
