@@ -5,7 +5,6 @@ services:
     type: server
     repo: ryvn-mango/nextjs
     build:
-      # buildpack: nixpack
       dockerfile: Dockerfile
   - name: minute-cron-job
     type: job
@@ -32,8 +31,9 @@ environments:
       - service: data-ingestor
       - service: asset-manager
     
-  # - name: sap
+  # - name: visa
   #   setup: customer-controlled
+  #   releaseChannel: stable
   #   provider:
   #     type: aws
   #   customerEmail: customer@ryvncloud.com
@@ -42,5 +42,11 @@ environments:
   #       config: |
   #         resources:
   #           requests:
-  #             cpu: 3
+  #             cpu: 0.5
+  #             memory: 1Gi
+  #     - service: asset-manager
+  #       config: |
+  #         resources:
+  #           requests:
+  #             cpu: 0.5
   #             memory: 1Gi
