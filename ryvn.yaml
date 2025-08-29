@@ -17,7 +17,11 @@ services:
     repo: ryvn-mango/charts
     build:
       chartPath: asset-manager
-  
+  - name: data-ingestor
+    type: helm-chart
+    repo: ryvn-mango/charts
+    build:
+      chartPath: data-ingestor
 
 environments:
   - name: sap
@@ -26,4 +30,4 @@ environments:
       type: aws
     customerEmail: customer@ryvncloud.com
     installations:
-      - service: asset-manager
+      - service: data-ingestor
