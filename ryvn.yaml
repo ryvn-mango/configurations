@@ -13,6 +13,7 @@ services:
     build:
       buildpack: nixpack
   - name: asset-manager
+    type: helm-chart
     build:
       repository: ryvn-mango/charts
       chartPath: asset-manager
