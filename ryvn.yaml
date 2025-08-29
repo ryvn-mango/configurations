@@ -31,8 +31,8 @@ environments:
     customerEmail: customer@ryvncloud.com
     installations:
       - service: data-ingestor
-        config: |
-          resources:
-            requests:
-              cpu: 3
-              memory: 1Gi
+        # config: |
+        #   resources:
+        #     requests:
+        #       cpu: 3
+        #       memory: 1Gi
