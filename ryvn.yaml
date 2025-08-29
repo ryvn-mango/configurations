@@ -33,22 +33,22 @@ environments:
           replicaCount: 3
       - service: asset-manager
     
-  # - name: visa
-  #   setup: customer-controlled
-  #   releaseChannel: stable
-  #   provider:
-  #     type: aws
-  #   customerEmail: customer@ryvncloud.com
-  #   installations:
-  #     - service: data-ingestor
-  #       config: |
-  #         resources:
-  #           requests:
-  #             cpu: 0.5
-  #             memory: 1Gi
-  #     - service: asset-manager
-  #       config: |
-  #         resources:
-  #           requests:
-  #             cpu: 0.5
-  #             memory: 1Gi
+  - name: visa
+    setup: customer-controlled
+    releaseChannel: stable
+    provider:
+      type: aws
+    customerEmail: customer@ryvncloud.com
+    installations:
+      - service: data-ingestor
+        config: |
+          resources:
+            requests:
+              cpu: 0.5
+              memory: 1Gi
+      - service: asset-manager
+        config: |
+          resources:
+            requests:
+              cpu: 0.5
+              memory: 1Gi
