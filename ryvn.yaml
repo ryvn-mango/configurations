@@ -24,15 +24,22 @@ services:
       chartPath: data-ingestor
 
 environments:
-  - name: sap
-    setup: customer-controlled
+  - name: jp-morgan
     provider:
       type: aws
-    customerEmail: customer@ryvncloud.com
     installations:
       - service: data-ingestor
-        # config: |
-        #   resources:
-        #     requests:
-        #       cpu: 3
-        #       memory: 1Gi
+      - service: asset-manager
+    
+  # - name: sap
+  #   setup: customer-controlled
+  #   provider:
+  #     type: aws
+  #   customerEmail: customer@ryvncloud.com
+  #   installations:
+  #     - service: data-ingestor
+  #       config: |
+  #         resources:
+  #           requests:
+  #             cpu: 3
+  #             memory: 1Gi
