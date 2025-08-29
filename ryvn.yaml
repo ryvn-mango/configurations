@@ -27,9 +27,9 @@ environments:
     provider:
       type: aws
       accountId: "941377111598"
-    # installations:
-    #   - service: data-ingestor
-    #   - service: asset-manager
+    installations:
+      - service: data-ingestor
+      - service: asset-manager
     
   # - name: visa
   #   setup: customer-controlled
