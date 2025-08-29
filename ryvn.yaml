@@ -1,53 +1,5 @@
 apiVersion: v1
 
-promotionPipelines:
-  - name: main-pipeline
-    paths:
-      - sourceChannel: staging
-        targetChannel: production
-        criteria:
-          type: manual
-      
-      - sourceChannel: production
-        targetChannel: stable
-        criteria:
-          type: canary
-          installationFilters:
-            include:
-              - environment: prod-us-east
-            # exclude:
-            #   - environment: prod-eu-*
-            #   - environmentLabel:
-            #       key: "air-gapped"
-          conditions:
-            promoteWhenHealthy:
-              thresholdPercent: 95
-              duration: 24h
-            # promoteWhenMinInstallations:
-            #   thresholdCount: 5
-            # recallWhenUnhealthy:
-            #   thresholdPercent: 5
-            #   duration: 2h
-
-maintenanceWindows:
-  - name: main-window
-    timeZone: America/New_York
-    intervals:
-      - MONDAY/9:00-MONDAY/22:00
-      - TUESDAY/9:00-TUESDAY/22:00
-      - WEDNESDAY/9:00-WEDNESDAY/22:00
-      - THURSDAY/9:00-THURSDAY/22:00
-      - FRIDAY/9:00-FRIDAY/22:00
-
-  - name: jp-morgan
-    timeZone: America/New_York
-    intervals:
-      - MONDAY/15:00-TUESDAY/09:00
-      - TUESDAY/15:00-WEDNESDAY/09:00
-      - WEDNESDAY/15:00-THURSDAY/09:00
-      - THURSDAY/15:00-FRIDAY/09:00
-      - FRIDAY/15:00-MONDAY/24:00
-
 services:
   - name: frontend-nextjs
     type: server
@@ -60,52 +12,17 @@ services:
     repo: ryvn-mango/minute-cron-job
     build:
       buildpack: nixpack
-  # - name: data-ingestor
-  #   maintenanceWindow: main-window
-  #   promotionPipeline: main-pipeline
-  #   build:
-  #     repository: ryvn-mango/charts
-  #     chartPath: data-ingestor
+  - name: asset-manager
+    build:
+      repository: ryvn-mango/charts
+      chartPath: asset-manager
   
-  # - name: asset-manager
-  #   maintenanceWindow: main-window
-  #   promotionPipeline: main-pipeline
-  #   build:
-  #     repository: ryvn-mango/charts
-  #     chartPath: asset-manager
-  
-  # - name: prometheus
-  #   maintenanceWindow: main-window
-  #   registry:
-  #     chartUrl: https://prometheus-community.github.io/helm-charts
-  #     chartName: prometheus
-  
-  # - name: anomaly-detector
-  #   promotionPipeline: main-pipeline
-  #   build:
-  #     repository: ryvn-mango/charts
-  #     chartPath: anomaly-detector
-
 
 environments:
-  - name: jp-morgan
-    # maintenanceWindow: jp-morgan
+  - name: sap
+    setup: customer-controlled
     provider:
       type: aws
-      accountId: '941377111598'
+    customerEmail: customer@ryvncloud.com
     installations:
-      - service: minute-cron-job
-        config: |
-          schedule: "* * * * *"
-          resources:
-            requests:
-              cpu: 0.1
-              memory: 0.5Gi
-#       - service: data-ingestor
-#       - service: asset-manager
-#         # config: |
-#         #   resource:
-#         #     requests:
-#         #       cpu: 100m
-#       - service: anomaly-detector
-#   # - source: ./cohere/cohere.yaml
+      - service: asset-manager
