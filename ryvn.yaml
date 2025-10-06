@@ -44,9 +44,9 @@ environments:
       vpc_cidr: 10.43.0.0/16
     installations:
       - service: frontend-nextjs
-        # resources:
-        #   cpuCores: 0.1
-        #   memoryMB: 1024
+        env:
+          - key: API_URL
+            value: backend-fastapi:3000
         config: |
           resources:
             requests:
@@ -73,9 +73,6 @@ environments:
                     .ryvn.env.state.public_domain.name }}
                 secretName: frontend-nextjs-ryvn-tls
       - service: backend-fastapi
-        # resources:
-        #   cpuCores: 0.1
-        #   memoryMB: 1024
         config: |
           resources:
             requests:
@@ -110,9 +107,6 @@ environments:
       vpc_cidr: 10.44.0.0/16
     installations:
       - service: frontend-nextjs
-        # resources:
-        #   cpuCores: 0.1
-        #   memoryMB: 1024
         config: |
           resources:
             requests:
@@ -140,9 +134,6 @@ environments:
                 secretName: frontend-nextjs-ryvn-tls
 
       - service: backend-fastapi
-        # resources:
-        #   cpuCores: 0.1
-        #   memoryMB: 1024
         config: |
           resources:
             requests:
