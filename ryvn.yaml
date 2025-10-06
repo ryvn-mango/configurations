@@ -6,11 +6,18 @@ services:
     repo: ryvn-mango/nextjs
     build:
       dockerfile: Dockerfile
+  - name: backend-fastapi
+    type: server
+    repo: ryvn-mango/fastapi
+    build:
+      dockerfile: Dockerfile
+
   - name: minute-cron-job
     type: job
     repo: ryvn-mango/minute-cron-job
     build:
       buildpack: nixpack
+
   - name: asset-manager
     type: helm-chart
     repo: ryvn-mango/charts
@@ -23,32 +30,32 @@ services:
       chartPath: data-ingestor
 
 environments:
-  - name: jp-morgan
-    provider:
-      type: aws
-      accountId: "941377111598"
-    installations:
-      - service: data-ingestor
-        config: |
-          replicaCount: 3
-      - service: asset-manager
+  # - name: jp-morgan
+  #   provider:
+  #     type: aws
+  #     accountId: "941377111598"
+  #   installations:
+  #     - service: data-ingestor
+  #       config: |
+  #         replicaCount: 3
+  #     - service: asset-manager
     
-  - name: visa
-    setup: customer-controlled
-    releaseChannel: stable
-    provider:
-      type: aws
-    customerEmail: customer@ryvncloud.com
-    installations:
-      - service: data-ingestor
-        config: |
-          resources:
-            requests:
-              cpu: 0.5
-              memory: 1Gi
-      - service: asset-manager
-        config: |
-          resources:
-            requests:
-              cpu: 0.5
-              memory: 1Gi
+  # - name: visa
+  #   setup: customer-controlled
+  #   releaseChannel: stable
+  #   provider:
+  #     type: aws
+  #   customerEmail: customer@ryvncloud.com
+  #   installations:
+  #     - service: data-ingestor
+  #       config: |
+  #         resources:
+  #           requests:
+  #             cpu: 0.5
+  #             memory: 1Gi
+  #     - service: asset-manager
+  #       config: |
+  #         resources:
+  #           requests:
+  #             cpu: 0.5
+  #             memory: 1Gi
