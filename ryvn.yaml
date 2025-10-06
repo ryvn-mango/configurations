@@ -59,3 +59,11 @@ environments:
   #           requests:
   #             cpu: 0.5
   #             memory: 1Gi
+
+promotionPipelines:
+  - name: product-team-pipeline
+    paths:
+      - sourceChannel: staging
+        targetChannel: production
+      - sourceChannel: production
+        targetChannel: stable
