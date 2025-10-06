@@ -104,10 +104,10 @@ environments:
       vpc_cidr: 10.2.0.0/16
     installations:
       - service: frontend-nextjs
+        resources:
+          cpuCores: 0.1
+          memoryMB: 1024
         config: |
-          requests:
-            cpu: 100m
-            memory: 0.5Gi
           service:
             port: 3000
           ingress:
@@ -130,11 +130,10 @@ environments:
                 secretName: frontend-nextjs-ryvn-tls
 
       - service: backend-fastapi
+        resources:
+          cpuCores: 0.1
+          memoryMB: 1024
         config: |
-          resources:
-            requests:
-              cpu: 100m
-              memory: 0.5Gi
           service:
             port: 8000
           ingress:
