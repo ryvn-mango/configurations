@@ -41,7 +41,7 @@ environments:
       accountId: "941377111598"
     config:
       region: us-east-1
-      vpc_cidr: 10.1.0.0/16
+      vpc_cidr: 10.43.0.0/16
     installations:
       - service: frontend-nextjs
         # resources:
@@ -107,7 +107,7 @@ environments:
       accountId: "941377111598"
     config:
       region: us-west-2
-      vpc_cidr: 10.2.0.0/16
+      vpc_cidr: 10.44.0.0/16
     installations:
       - service: frontend-nextjs
         # resources:
