@@ -73,6 +73,8 @@ environments:
                     .ryvn.env.state.public_domain.name }}
                 secretName: frontend-nextjs-ryvn-tls
       - service: backend-fastapi
+        env:
+          - orgSecret: prod-us-east
         config: |
           resources:
             requests:
@@ -134,6 +136,8 @@ environments:
                 secretName: frontend-nextjs-ryvn-tls
 
       - service: backend-fastapi
+        env:
+          - orgSecret: prod-us-west
         config: |
           resources:
             requests:
