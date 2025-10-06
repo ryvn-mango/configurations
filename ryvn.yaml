@@ -1,23 +1,28 @@
 apiVersion: v1
 
 services:
+  # Dockerfile-based Services
   - name: frontend-nextjs
     type: server
     repo: ryvn-mango/nextjs
     build:
       dockerfile: Dockerfile
+    promotionPipeline: product-team-pipeline
   - name: backend-fastapi
     type: server
     repo: ryvn-mango/fastapi
     build:
       dockerfile: Dockerfile
+    promotionPipeline: product-team-pipeline
 
+    # Jobs
   - name: minute-cron-job
     type: job
     repo: ryvn-mango/minute-cron-job
     build:
       buildpack: nixpack
 
+  # Helm Chart Services
   - name: asset-manager
     type: helm-chart
     repo: ryvn-mango/charts
