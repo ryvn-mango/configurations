@@ -177,35 +177,35 @@ environments:
       region: us-east-1
       vpc_cidr: 10.42.0.0/16
     installations:
-      - service: frontend-nextjs
-        env:
-          - key: API_URL
-            value: http://backend-fastapi:8000
-        config: |
-          resources:
-            requests:
-              cpu: 0.1
-              memory: 512Mi
-          service:
-            port: 3000
-          ingress:
-            enabled: true
-            className: external-nginx
-            annotations:
-              cert-manager.io/cluster-issuer: external-issuer
-              nginx.ingress.kubernetes.io/proxy-body-size: 5g
-              nginx.ingress.kubernetes.io/proxy-buffer-size: 32k
-            hosts:
-              - host: frontend-nextjs.{{ default "example.local"
-                  .ryvn.env.state.public_domain.name }}
-                paths:
-                  - path: /
-                    pathType: Prefix
-            tls:
-              - hosts:
-                  - frontend-nextjs.{{ default "example.local"
-                    .ryvn.env.state.public_domain.name }}
-                secretName: frontend-nextjs-ryvn-tls
+      # - service: frontend-nextjs
+      #   env:
+      #     - key: API_URL
+      #       value: http://backend-fastapi:8000
+      #   config: |
+      #     resources:
+      #       requests:
+      #         cpu: 0.1
+      #         memory: 512Mi
+      #     service:
+      #       port: 3000
+      #     ingress:
+      #       enabled: true
+      #       className: external-nginx
+      #       annotations:
+      #         cert-manager.io/cluster-issuer: external-issuer
+      #         nginx.ingress.kubernetes.io/proxy-body-size: 5g
+      #         nginx.ingress.kubernetes.io/proxy-buffer-size: 32k
+      #       hosts:
+      #         - host: frontend-nextjs.{{ default "example.local"
+      #             .ryvn.env.state.public_domain.name }}
+      #           paths:
+      #             - path: /
+      #               pathType: Prefix
+      #       tls:
+      #         - hosts:
+      #             - frontend-nextjs.{{ default "example.local"
+      #               .ryvn.env.state.public_domain.name }}
+      #           secretName: frontend-nextjs-ryvn-tls
 
       - service: backend-fastapi
         env:
