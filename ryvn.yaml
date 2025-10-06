@@ -168,6 +168,7 @@ environments:
                   - backend-fastapi.{{ default "example.local"
                     .ryvn.env.state.public_domain.name }}
                 secretName: backend-fastapi-ryvn-tls
+
   - name: cohere
     provider:
       type: aws
@@ -177,9 +178,9 @@ environments:
       vpc_cidr: 10.42.0.0/16
     installations:
       - service: frontend-nextjs
-        env:
-          - key: API_URL
-            value: http://backend-fastapi:8000
+        # env:
+        #   - key: API_URL
+        #     value: http://backend-fastapi:8000
         config: |
           resources:
             requests:
