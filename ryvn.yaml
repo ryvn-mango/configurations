@@ -46,7 +46,7 @@ environments:
       - service: frontend-nextjs
         env:
           - key: API_URL
-            value: http://backend-fastapi:3000
+            value: backend-fastapi:8000
         config: |
           resources:
             requests:
