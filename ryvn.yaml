@@ -241,8 +241,8 @@ environments:
       type: aws
       accountId: "941377111598"
     config:
-      region: us-west-2
-      vpc_cidr: 10.44.0.0/16
+      region: us-east-1
+      vpc_cidr: 10.42.0.0/16
     installations:
       - service: frontend-nextjs
         env:
