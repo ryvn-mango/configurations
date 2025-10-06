@@ -93,7 +93,6 @@ environments:
                   - backend-fastapi.{{ default "example.local"
                     .ryvn.env.state.public_domain.name }}
                 secretName: backend-fastapi-ryvn-tls
-
   - name: prod-us-west
     provider:
       type: aws
