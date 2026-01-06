@@ -2,7 +2,7 @@ kind: Environment
 metadata:
   name: jp-morgan
 spec:
-  config:
+  config: |
     region: us-east-1
     vpc_cidr: 10.42.0.0/16
   provider:

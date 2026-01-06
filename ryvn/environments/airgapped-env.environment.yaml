@@ -2,5 +2,5 @@ kind: Environment
 metadata:
   name: airgapped-env
 spec:
-  config:
+  config: |
     airgapped: true

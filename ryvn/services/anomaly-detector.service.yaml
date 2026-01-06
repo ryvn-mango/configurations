@@ -6,3 +6,4 @@ spec:
   repo: ryvn-mango/charts
   build:
     chartPath: anomaly-detector
+  chart: anomaly-detector
