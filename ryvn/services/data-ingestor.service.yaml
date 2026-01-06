@@ -1,0 +1,8 @@
+kind: Service
+metadata:
+  name: data-ingestor
+spec:
+  type: helm-chart
+  repo: ryvn-mango/charts
+  build:
+    chartPath: data-ingestor

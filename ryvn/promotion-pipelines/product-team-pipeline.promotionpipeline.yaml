@@ -1,0 +1,9 @@
+kind: PromotionPipeline
+metadata:
+  name: product-team-pipeline
+spec:
+  paths:
+  - sourceChannel: staging
+    targetChannel: production
+  - sourceChannel: production
+    targetChannel: stable
