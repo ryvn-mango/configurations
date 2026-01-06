@@ -1,0 +1,10 @@
+kind: Environment
+metadata:
+  name: jp-morgan
+spec:
+  config:
+    region: us-east-1
+    vpc_cidr: 10.42.0.0/16
+  provider:
+    accountId: "941377111598"
+    type: aws

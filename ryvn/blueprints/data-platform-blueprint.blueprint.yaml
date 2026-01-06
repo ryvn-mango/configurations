@@ -1,0 +1,25 @@
+kind: Blueprint
+metadata:
+  name: data-platform-blueprint
+spec:
+  description: A simple blueprint with asset management, anomaly detection, and data ingestion services
+  displayName: Data Platform Blueprint
+  installations:
+  - service: asset-manager
+    config: |
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 256Mi
+  - service: anomaly-detector
+    config: |
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 256Mi
+  - service: data-ingestor
+    config: |
+      resources:
+        requests:
+          cpu: 0.1
+          memory: 256Mi

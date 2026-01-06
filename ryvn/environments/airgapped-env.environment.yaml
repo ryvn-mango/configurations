@@ -1,0 +1,6 @@
+kind: Environment
+metadata:
+  name: airgapped-env
+spec:
+  config:
+    airgapped: true

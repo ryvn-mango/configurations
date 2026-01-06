@@ -1,0 +1,9 @@
+kind: Service
+metadata:
+  name: backend-fastapi
+spec:
+  type: server
+  repo: ryvn-mango/fastapi
+  build:
+    dockerfile: Dockerfile
+  promotionPipeline: product-team-pipeline

@@ -1,0 +1,9 @@
+kind: Service
+metadata:
+  name: frontend-nextjs
+spec:
+  type: server
+  repo: ryvn-mango/nextjs
+  build:
+    dockerfile: Dockerfile
+  promotionPipeline: product-team-pipeline

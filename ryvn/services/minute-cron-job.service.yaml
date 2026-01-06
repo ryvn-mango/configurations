@@ -1,0 +1,8 @@
+kind: Service
+metadata:
+  name: minute-cron-job
+spec:
+  type: job
+  repo: ryvn-mango/minute-cron-job
+  build:
+    buildpack: nixpack

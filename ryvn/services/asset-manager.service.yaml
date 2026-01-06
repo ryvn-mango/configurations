@@ -1,0 +1,8 @@
+kind: Service
+metadata:
+  name: asset-manager
+spec:
+  type: helm-chart
+  repo: ryvn-mango/charts
+  build:
+    chartPath: asset-manager
