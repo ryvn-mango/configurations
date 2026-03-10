@@ -6,4 +6,7 @@ spec:
   repo: ryvn-mango/fastapi
   build:
     dockerfile: Dockerfile
+    branches:
+      - name: staging
+      - name: main
   promotionPipeline: product-team-pipeline
