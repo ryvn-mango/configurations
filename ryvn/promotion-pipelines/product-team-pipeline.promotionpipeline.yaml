@@ -3,7 +3,7 @@ metadata:
   name: product-team-pipeline
 spec:
   paths:
-  - sourceChannel: staging
-    targetChannel: production
-  - sourceChannel: production
-    targetChannel: stable
+    - sourceChannel: branch:main
+      targetChannel: production
+    - sourceChannel: production
+      targetChannel: stable
