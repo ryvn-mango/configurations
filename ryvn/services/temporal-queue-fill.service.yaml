@@ -1,0 +1,8 @@
+kind: Service
+metadata:
+  name: temporal-queue-fill
+spec:
+  type: job
+  repo: ryvn-mango/temporal-queue-fill
+  build:
+    dockerfile: Dockerfile
