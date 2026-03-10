@@ -1,0 +1,8 @@
+kind: Service
+metadata:
+  name: temporal-worker
+spec:
+  type: server
+  repo: ryvn-mango/temporal-worker
+  build:
+    dockerfile: Dockerfile
