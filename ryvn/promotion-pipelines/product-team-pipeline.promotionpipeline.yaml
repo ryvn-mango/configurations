@@ -5,5 +5,3 @@ spec:
   paths:
     - sourceChannel: branch:main
       targetChannel: stable
-    - sourceChannel: stable
-      targetChannel: stable-2
